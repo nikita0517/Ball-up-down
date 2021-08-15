@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <link rel="icon" href="ball.jpg"/>
+        <title>Moving BALL </title>
+        <script src="jquery-3.6.0.min.js"></script>
+         <script>
+         $(document).ready(function(){
+         $("#b1").hover(function(){
+         $("#b1").css({"color":"red","background":"pink","font-weight":"bold","font-size":"25px"});
+         });
+         });
+         $(document).ready(function(){
+         $("#b2").hover(function(){
+         $("#b2").css({"color":"red","background":"pink","font-weight":"bold","font-size":"25px"});
+         });
+         });
+         $(document).ready(function(){
+         $("#b3").hover(function(){
+         $("#b3").css({"color":"red","background":"pink","font-weight":"bold","font-size":"25px"});
+         });
+         });
+         </script>
+
+        <style>
+            body{
+                overflow:hidden;
+              
+            }
+            h1{
+              text-align:center;
+             margin:20px;
+                }
+            *{
+              margin:0px; padding:0px;
+            }
+            .buttons {
+                position: relative;
+                top: 5%;
+                left: 35%;
+            }.buttons button{
+                 padding:10px 15px;
+                 margin:8px;
+                 border-radius:23px;
+                 }
+        </style>
+    </head>
+    <body>
+<h1>BALL UP AND DOWN</h1>
+        <div class="background">
+             
+            <img src="ball.jpg" id="car" alt="car" width="100px;" />
+        </div>
+        <div class="buttons">
+            <button id="b1" onclick="f1()">START</button>
+            <button id="b2" onclick="f2()">STOP</button>
+            <button id="b3" onclick="f3()">RESET</button>
+        </div>
+    </body>
+</html>
+<script>
+    var x = document.getElementById('car');
+    x.style.position = "relative";
+    x.style.zindex = "10";
+    var a = 0;
+    var i;
+    var b = 0;
+    var c = 0;
+    function f1() {
+        clearInterval(i);
+        if (c == 0) {
+            i=setInterval(down, 5);
+        } else if (c == 1) {
+            clearInterval(i);
+            i = setInterval(up, 5);
+        } else if (c == 2) {
+            clearInterval(i);
+            i = setInterval(down2, 5);
+        } else {
+            clearInterval(i);
+            i = setInterval(up2, 5);
+        }
+    }
+    function down(){
+        if (a < 530) {
+            c = 0;
+            a += 1;
+            b += 1.2;
+            x.style.top = a + "px";
+            x.style.left = b + "px";
+            document.body.style.backgroundImage = "url('ground.jpeg')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "cover";
+        } else{
+            clearInterval(i);
+            i = setInterval(up, 5);
+        } 
+    }
+    function up() {
+        if (a > 0) {
+            c = 1;
+            a -= 1;
+            b += 1.2;
+            x.style.top = a + "px";
+            x.style.left = b + "px";
+            document.body.style.backgroundImage = "url('ground1.jpeg')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "cover";
+        } else {
+            clearInterval(i);
+            i=setInterval(down2, 5);
+        }
+    }
+    function down2() {
+        if (a < 530) {
+            c = 2;
+            a += 1;
+            b -= 1.2;
+            x.style.top = a + "px";
+            x.style.left = b + "px";
+            document.body.style.backgroundImage = "url('ground2.jpeg')";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundSize = "cover";
+        } else {
+            clearInterval(i);
+            i = setInterval(up2, 5);
+        }
+    }
+    function up2() {
+        if (a > 0) {
+            c = 3;
+            a -= 1;
+            b -= 1.2;
+            x.style.top = a + "px";
+            x.style.left = b + "px";
+            document.body.style.backgroundColor = "violet";
+        } else {
+            clearInterval(i);
+            i = setInterval(down, 5);
+        }
+    }
+    function f2() {
+        clearInterval(i);
+    }
+    function f3() {
+        clearInterval(i);
+        a = 0;
+        b = 0;
+        x.style.left = "0px";
+        x.style.top = "0px";
+    }
+ </script>
